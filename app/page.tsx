@@ -10,6 +10,9 @@ async function fetchTranslations(locale: string): Promise<Translation[]> {
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const translations = await fetchTranslations(params.locale);
+  console.log(params.locale);
+  console.log(translations);
+  
   const translationsMap = translations.reduce((acc: { [key: string]: string }, item: Translation) => {
     acc[item.key] = item.value;
     return acc;

@@ -1,25 +1,32 @@
 "use client";
 
-import { useEffect, useState } from 'react';
 import { useLocale } from '@/context/LocaleContext';
+import { getTranslation } from '@/lib/helpers';
+import ServiceList from '@/components/lists/ServiceList';
+import BlogList from '@/components/lists/BlogList';
+import NewsList from '@/components/lists/NewsList';
 
-interface HomePageClientProps {
-  translations: { [key: string]: string };
-}
+const HomePageClient = () => {
+  const { translations, services, blogs, news, isLoading } = useLocale();
 
-const HomePageClient: React.FC<HomePageClientProps> = ({ translations }) => {
-  const { locale } = useLocale();
-  const [displayTranslations, setDisplayTranslations] = useState<{ [key: string]: string }>(translations);
-
-  useEffect(() => {
-    setDisplayTranslations(translations);
-  }, [translations]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <section className="text-center p-8">
-      <h1 className="text-4xl font-bold">{displayTranslations.welcome}</h1>
-      <p className="text-xl">{displayTranslations.description}</p>
-    </section>
+    <div>
+      <h1>{getTranslation(translations, 'welcome', 'home')}</h1>
+      <p>{getTranslation(translations, 'description', 'home')}</p>
+      
+      <h2>{getTranslation(translations, 'title', 'services')}</h2>
+     <ServiceList services={services} />
+
+      <h2>{getTranslation(translations, 'title', 'blogs')}</h2>
+      <BlogList blogs={blogs} />
+
+      <h2>{getTranslation(translations, 'title', 'news')}</h2>
+      <NewsList news={news} />
+    </div>
   );
 };
 

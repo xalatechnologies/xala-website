@@ -41,6 +41,22 @@ async function main() {
       { locale: 'en', key: 'send', value: 'Send', category: 'contact' },
       { locale: 'no', key: 'send', value: 'Send', category: 'contact' },
       
+      // Services
+      { locale: 'en', key: 'title', value: 'Our Services', category: 'services' },
+      { locale: 'no', key: 'title', value: 'Vår tjenester', category: 'services' },
+
+      // News
+      { locale: 'en', key: 'title', value: 'News', category: 'news' },
+      { locale: 'no', key: 'title', value: 'Nyheter', category: 'news' },
+
+      // Blogs
+      { locale: 'en', key: 'title', value: 'Blog', category: 'blogs' },
+      { locale: 'no', key: 'title', value: 'Blogg', category: 'blogs' },
+
+      // Portfolio
+      { locale: 'en', key: 'title', value: 'Portfolio', category: 'portfolio' },
+      { locale: 'no', key: 'title', value: 'Referanser', category: 'portfolio' },
+
       // Add more translations as needed
     ],
   });

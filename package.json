@@ -13,6 +13,7 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@prisma/client": "^5.14.0",
     "@types/negotiator": "^0.6.3",
+    "flag-icons": "^7.2.3",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.9.9",
     "negotiator": "^0.6.3",

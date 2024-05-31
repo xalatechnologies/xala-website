@@ -27,6 +27,6 @@
       "@/context/*": ["context/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.js", "pages/api/data.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.js", "pages/api/data.ts"],
   "exclude": ["node_modules"]
 }

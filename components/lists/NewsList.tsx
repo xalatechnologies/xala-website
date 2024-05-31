@@ -1,15 +1,13 @@
 "use client";
 
 import { News } from '@/lib/interfaces';
+import NewsCard from '../cards/NewsCard';
 
 const NewsList = ({ news }: { news: News[] }) => {
   return (
     <div className="container mx-auto p-4">
-      {news.map((newsItem) => (
-        <div key={newsItem.id} className="mb-4 p-4 border">
-          <h2 className="text-2xl font-bold">{newsItem.title}</h2>
-          <p>{newsItem.content}</p>
-        </div>
+     {news.map((news: News) => (
+        <NewsCard news={news} key={news.id} />
       ))}
     </div>
   );
