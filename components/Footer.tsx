@@ -1,7 +1,11 @@
-const Footer = () => (
-    <footer className="bg-gray-800 text-white text-center p-4">
-        <p>&copy; 2024 Xala Technologies. All rights reserved.</p>
-    </footer>
-);
+"use client";
 
-export default Footer;
+const ClientFooter = ({ footerContent }: { footerContent: string }) => {
+  return (
+    <footer className="bg-gray-800 text-white p-4 text-center">
+      <p>{footerContent}</p>
+    </footer>
+  );
+};
+
+export default ClientFooter;

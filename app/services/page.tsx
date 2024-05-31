@@ -1,40 +1,34 @@
-import Head from 'next/head';
-import ServiceCard from '../../components/ServiceCard';
+import ServiceList from '@/components/ServiceList';
+import { ApiResponse, Translation } from '@/lib/interfaces';
 
-interface Service {
-    title: string;
-    description: string;
-}
-
-const fetchServices = async (): Promise<Service[]> => {
-    // TODO: Simulate data fetch. Replace with actual data fetching logic.
-    return [
-        { title: 'Office365 Integration', description: 'We provide seamless Office365 integration for your business.' },
-        { title: 'SharePoint Services', description: 'Custom SharePoint solutions tailored to your needs.' },
-        { title: 'Web Application Development', description: 'Developing modern web applications to streamline your business processes.' },
-        { title: 'Software Development Consultancy', description: 'Expert consultancy for your software development projects.' },
-    ];
+const fetchData = async (locale: string): Promise<ApiResponse> => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/data?locale=${locale}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
 };
 
-const Services = async () => {
-    const services = await fetchServices();
+const ServicesPage = async () => {
+  const locale = typeof window !== 'undefined' ? navigator.language : 'en';
+  const data = await fetchData(locale);
+  const metaTags: { [key: string]: string } = data.metaTags.filter(tag => tag.category === 'meta_services').reduce((acc: { [key: string]: string }, item: Translation) => {
+    acc[item.key] = item.value;
+    return acc;
+  }, {});
 
-    return (
-        <>
-            <Head>
-                <title>Our Services - Xala Technologies</title>
-                <meta name="description" content="Discover our top-notch services in Office365, SharePoint, custom web application development, and software development consultancy." />
-            </Head>
-            <section className="text-center p-8">
-                <h1 className="text-4xl font-bold">Our Services</h1>
-                <div className="flex flex-wrap justify-around mt-8">
-                    {services.map((service, index) => (
-                        <ServiceCard key={index} title={service.title} description={service.description} />
-                    ))}
-                </div>
-            </section>
-        </>
-    );
+  return (
+    <>
+      <head>
+        <meta name="description" content={metaTags.description} />
+        <title>{metaTags.title}</title>
+      </head>
+      <section className="text-center p-8">
+        <h1 className="text-4xl font-bold">Services</h1>
+        <ServiceList services={data.services} />
+      </section>
+    </>
+  );
 };
 
-export default Services;
+export default ServicesPage;

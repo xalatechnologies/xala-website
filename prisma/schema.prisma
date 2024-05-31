@@ -1,0 +1,54 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Translation {
+  id        Int      @id @default(autoincrement())
+  locale    String
+  key       String
+  value     String
+  category  String
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  locale      String
+}
+
+model Blog {
+  id          Int      @id @default(autoincrement())
+  title       String
+  excerpt     String
+  content     String
+  locale      String
+}
+
+model Portfolio {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  locale      String
+}
+
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String
+  locale      String
+  date        DateTime @default(now())
+}
+
+model Menu {
+  id       Int      @id @default(autoincrement())
+  locale   String
+  label    String
+  url      String
+  position Int
+}
