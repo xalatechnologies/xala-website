@@ -25,9 +25,7 @@ const NotFoundPage = async () => {
       </head>
       <h1 className="text-6xl font-bold mb-4">{notFoundContent.title}</h1>
       <p className="text-2xl mb-8">{notFoundContent.message}</p>
-      <Link href="/">
-        <a className="text-blue-500 hover:underline">{notFoundContent.linkText}</a>
-      </Link>
+      <Link href="/" className="text-blue-500 hover:underline">{notFoundContent.linkText}</Link>
     </div>
   );
 };

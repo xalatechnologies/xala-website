@@ -13,16 +13,13 @@
     "@formatjs/intl-localematcher": "^0.5.4",
     "@prisma/client": "^5.14.0",
     "@types/negotiator": "^0.6.3",
-    "i18next": "^23.11.5",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.9.9",
     "negotiator": "^0.6.3",
     "next": "14.2.3",
-    "next-i18next": "^15.3.0",
     "prisma": "^5.14.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-i18next": "^14.1.2",
     "sass": "^1.77.3"
   },
   "devDependencies": {

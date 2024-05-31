@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import { useLocale } from '@/context/LocaleContext';
 
 interface HomePageClientProps {
   translations: { [key: string]: string };
 }
 
 const HomePageClient: React.FC<HomePageClientProps> = ({ translations }) => {
+  const { locale } = useLocale();
   const [displayTranslations, setDisplayTranslations] = useState<{ [key: string]: string }>(translations);
 
   useEffect(() => {

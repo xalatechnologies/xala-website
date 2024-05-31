@@ -1,5 +1,5 @@
 import prisma from './prisma';
-import { Translation, Service, Blog, Portfolio, MetaTag, News, Footer, NotFoundPageContent } from './interfaces';
+import { Translation, Service, Blog, Portfolio, News } from './interfaces';
 
 export async function getTranslations(locale: string): Promise<Record<string, string>> {
   const translations = await prisma.translation.findMany({
@@ -29,29 +29,11 @@ export async function getPortfolios(locale: string): Promise<Portfolio[]> {
   });
 }
 
-export async function getMetaTags(page: string, locale: string): Promise<MetaTag | null> {
-  return await prisma.metaTag.findFirst({
-    where: { page, locale },
-  });
-}
-
 export async function getNews(locale: string): Promise<News[]> {
   return await prisma.news.findMany({
     where: { locale },
     orderBy: {
       date: 'desc',
     },
-  });
-}
-
-export async function getFooter(locale: string): Promise<Footer | null> {
-  return await prisma.footer.findFirst({
-    where: { locale },
-  });
-}
-
-export async function getNotFoundPageContent(locale: string): Promise<NotFoundPageContent | null> {
-  return await prisma.notFoundPageContent.findFirst({
-    where: { locale },
   });
 }

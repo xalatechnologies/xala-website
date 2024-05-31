@@ -1,9 +1,10 @@
-"use client";
+"use client"; // Mark this as a client component
 
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useLocale } from '@/context/LocaleContext';
 import { Menu } from '@/lib/interfaces';
+import LanguageSelector from '@/components/LanguageSelector';
 
 const fetchMenus = async (locale: string): Promise<Menu[]> => {
   const res = await fetch(`/api/data?locale=${locale}&type=menu`);
@@ -25,16 +26,15 @@ const Header = () => {
     <header className="bg-gray-800 text-white p-4">
       <nav className="flex justify-between items-center container mx-auto">
         <div className="text-2xl font-bold">
-          <Link href={`/${locale}`}>
-            <a>Xala Technologies</a>
-          </Link>
+          <Link href="/">Xala Technologies</Link>
         </div>
-        <div>
-          {menus.map(menu => (
-            <Link key={menu.id} href={menu.url}>
-              <a className="mr-4">{menu.label}</a>
+        <div className="flex items-center">
+          {menus && menus.length > 0 && menus.map(menu => (
+            <Link key={menu.id} href={menu.url} className="mr-4">
+              {menu.label}
             </Link>
           ))}
+          <LanguageSelector />
         </div>
       </nav>
     </header>

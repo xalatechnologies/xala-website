@@ -2,40 +2,31 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '@/lib/prisma';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { locale } = req.query;
+  const { locale, type } = req.query;
 
-  if (typeof locale !== 'string') {
-    return res.status(400).json({ error: 'Invalid locale' });
+  if (typeof locale !== 'string' || typeof type !== 'string') {
+    return res.status(400).json({ error: 'Invalid query parameters' });
   }
 
   try {
-    const [services, blogs, news, portfolio, translations] = await Promise.all([
-      prisma.service.findMany({ where: { locale } }),
-      prisma.blog.findMany({ where: { locale } }),
-      prisma.news.findMany({ where: { locale } }),
-      prisma.portfolio.findMany({ where: { locale } }),
-      prisma.translation.findMany({ where: { locale } }),
-    ]);
+    let data;
 
-    const metaTags = translations.filter(t => t.category.startsWith('meta_'));
-    const footer = translations.filter(t => t.category === 'footer');
-    const notFound = translations.filter(t => t.category === 'not_found');
-    const contact = translations.filter(t => t.category === 'contact');
+    switch (type) {
+      case 'home':
+        data = await prisma.translation.findMany({ where: { locale, category: 'home' } });
+        break;
+      case 'menu':
+        data = await prisma.menu.findMany({ where: { locale }, orderBy: { position: 'asc' } });
+        break;
+      default:
+        return res.status(400).json({ error: 'Invalid type parameter' });
+    }
 
-    if (!services || !blogs || !news || !portfolio || !metaTags || !footer || !notFound || !contact) {
+    if (!data) {
       return res.status(404).json({ error: 'Not Found' });
     }
 
-    res.status(200).json({
-      services,
-      blogs,
-      news,
-      portfolio,
-      metaTags,
-      footer,
-      notFound,
-      contact,
-    });
+    res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch data' });
   }

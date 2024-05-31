@@ -44,6 +44,11 @@ export interface Menu {
   position: number;
 }
 
+export interface MetaData {
+  title: string;
+  description: string;
+}
+
 export interface ApiResponse {
   services: Service[];
   blogs: Blog[];

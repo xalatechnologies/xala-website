@@ -1,9 +1,15 @@
 "use client";
 
-const ClientFooter = ({ footerContent }: { footerContent: string }) => {
+import { FC } from 'react';
+
+interface ClientFooterProps {
+  footerContent: string;
+}
+
+const ClientFooter: FC<ClientFooterProps> = ({ footerContent }) => {
   return (
-    <footer className="bg-gray-800 text-white text-center p-4">
-      <p dangerouslySetInnerHTML={{ __html: footerContent }} />
+    <footer className="bg-gray-800 text-white p-4 text-center">
+      {footerContent}
     </footer>
   );
 };
