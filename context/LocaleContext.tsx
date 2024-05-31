@@ -18,6 +18,7 @@ export const LocaleProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const changeLocale = (newLocale: string) => {
+    console.log("changed");
     setLocale(newLocale);
     localStorage.setItem('locale', newLocale);
   };

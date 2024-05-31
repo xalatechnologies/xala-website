@@ -79,18 +79,35 @@ async function main() {
 
   await prisma.menu.createMany({
     data: [
-      { locale: 'en', label: 'Home', url: '/en', position: 1 },
-      { locale: 'en', label: 'Services', url: '/en/services', position: 2 },
-      { locale: 'en', label: 'Blog', url: '/en/blog', position: 3 },
-      { locale: 'en', label: 'News', url: '/en/news', position: 4 },
-      { locale: 'en', label: 'Portfolio', url: '/en/portfolio', position: 5 },
-      { locale: 'en', label: 'Contact', url: '/en/contact', position: 6 },
-      { locale: 'no', label: 'Hjem', url: '/no', position: 1 },
-      { locale: 'no', label: 'Tjenester', url: '/no/services', position: 2 },
-      { locale: 'no', label: 'Blogg', url: '/no/blog', position: 3 },
-      { locale: 'no', label: 'Nyheter', url: '/no/news', position: 4 },
-      { locale: 'no', label: 'Portefølje', url: '/no/portfolio', position: 5 },
-      { locale: 'no', label: 'Kontakt', url: '/no/contact', position: 6 },
+      { key: 'home', locale: 'en', label: 'Home', url: '/', position: 1 },
+      { key: 'home', locale: 'no', label: 'Hjem', url: '/', position: 1 },
+      { key: 'services', locale: 'en', label: 'Services', url: '/services', position: 2 },
+      { key: 'services', locale: 'no', label: 'Tjenester', url: '/services', position: 2 },
+      { key: 'blog', locale: 'en', label: 'Blog', url: '/blog', position: 3 },
+      { key: 'blog', locale: 'no', label: 'Blogg', url: '/blog', position: 3 },
+      { key: 'news', locale: 'en', label: 'News', url: '/news', position: 4 },
+      { key: 'news', locale: 'no', label: 'Nyheter', url: '/news', position: 4 },
+      { key: 'portfolio', locale: 'en', label: 'Portfolio', url: '/portfolio', position: 5 },
+      { key: 'portfolio', locale: 'no', label: 'Portefølje', url: '/portfolio', position: 5 },
+      { key: 'contact', locale: 'en', label: 'Contact', url: '/contact', position: 6 },
+      { key: 'contact', locale: 'no', label: 'Kontakt', url: '/contact', position: 6 },
+    ],
+  });
+
+  await prisma.headerMenu.createMany({
+    data: [
+      { key: 'home', locale: 'en', label: 'Home', url: '/', position: 1 },
+      { key: 'home', locale: 'no', label: 'Hjem', url: '/', position: 1 },
+      { key: 'services', locale: 'en', label: 'Services', url: '/services', position: 2 },
+      { key: 'services', locale: 'no', label: 'Tjenester', url: '/services', position: 2 },
+      { key: 'blog', locale: 'en', label: 'Blog', url: '/blog', position: 3 },
+      { key: 'blog', locale: 'no', label: 'Blogg', url: '/blog', position: 3 },
+      { key: 'news', locale: 'en', label: 'News', url: '/news', position: 4 },
+      { key: 'news', locale: 'no', label: 'Nyheter', url: '/news', position: 4 },
+      { key: 'portfolio', locale: 'en', label: 'Portfolio', url: '/portfolio', position: 5 },
+      { key: 'portfolio', locale: 'no', label: 'Portefølje', url: '/portfolio', position: 5 },
+      { key: 'contact', locale: 'en', label: 'Contact', url: '/contact', position: 6 },
+      { key: 'contact', locale: 'no', label: 'Kontakt', url: '/contact', position: 6 },
     ],
   });
 }

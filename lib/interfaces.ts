@@ -44,6 +44,14 @@ export interface Menu {
   position: number;
 }
 
+export interface HeaderMenu {
+  id: number;
+  locale: string;
+  label: string;
+  url: string;
+  position: number;
+}
+
 export interface MetaData {
   title: string;
   description: string;
@@ -53,6 +61,7 @@ export interface ApiResponse {
   services: Service[];
   blogs: Blog[];
   news: News[];
+  menus: News[];
   portfolio: Portfolio[];
   metaTags: Translation[];
   footer: Translation[];

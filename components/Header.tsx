@@ -7,7 +7,7 @@ import { Menu } from '@/lib/interfaces';
 import LanguageSelector from '@/components/LanguageSelector';
 
 const fetchMenus = async (locale: string): Promise<Menu[]> => {
-  const res = await fetch(`/api/data?locale=${locale}&type=menu`);
+  const res = await fetch(`/api/data?locale=${locale}`);
   if (!res.ok) {
     throw new Error('Failed to fetch menu items');
   }
@@ -19,7 +19,9 @@ const Header = () => {
   const [menus, setMenus] = useState<Menu[]>([]);
 
   useEffect(() => {
-    fetchMenus(locale).then(setMenus).catch(console.error);
+    fetchMenus(locale).then((res: any) => {
+      setMenus(res.headerMenus);
+    }).catch(console.error);
   }, [locale]);
 
   return (

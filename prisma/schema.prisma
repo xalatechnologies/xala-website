@@ -47,6 +47,16 @@ model News {
 
 model Menu {
   id       Int      @id @default(autoincrement())
+  key      String
+  locale   String
+  label    String
+  url      String
+  position Int
+}
+
+model HeaderMenu {
+  id       Int      @id @default(autoincrement())
+  key      String
   locale   String
   label    String
   url      String
