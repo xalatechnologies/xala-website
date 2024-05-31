@@ -7,22 +7,30 @@ import { Menu } from '@/lib/interfaces';
 import LanguageSelector from '@/components/LanguageSelector';
 
 const fetchMenus = async (locale: string): Promise<Menu[]> => {
-  const res = await fetch(`/api/data?locale=${locale}`);
+  const res = await fetch(`/api/data?locale=${locale}&type=menu`);
   if (!res.ok) {
     throw new Error('Failed to fetch menu items');
   }
-  return res.json();
+  const data = await res.json();
+  return data;
 };
 
 const Header = () => {
-  const { locale } = useLocale();
+  const { locale, isLoading } = useLocale();
   const [menus, setMenus] = useState<Menu[]>([]);
 
   useEffect(() => {
-    fetchMenus(locale).then((res: any) => {
-      setMenus(res.headerMenus);
-    }).catch(console.error);
-  }, [locale]);
+    if (!isLoading) {
+      console.log('Fetching menus for locale:', locale); // Debugging line
+      fetchMenus(locale)
+        .then((res: any) => {
+          setMenus(res.headerMenus);
+        })
+        .catch(console.error);
+    }
+  }, [locale, isLoading]);
+
+  if (isLoading) return null;
 
   return (
     <header className="bg-gray-800 text-white p-4">
@@ -31,7 +39,7 @@ const Header = () => {
           <Link href="/">Xala Technologies</Link>
         </div>
         <div className="flex items-center">
-          {menus && menus.length > 0 && menus.map(menu => (
+          {Array.isArray(menus) && menus.map(menu => (
             <Link key={menu.id} href={menu.url} className="mr-4">
               {menu.label}
             </Link>

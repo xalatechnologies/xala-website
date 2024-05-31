@@ -9,7 +9,6 @@ const LanguageSelector = () => {
     const newLocale = e.target.value;
     setLocale(newLocale);
     localStorage.setItem('locale', newLocale);
-    location.reload(); // Reload the page to fetch the data for the new locale
   };
 
   return (
