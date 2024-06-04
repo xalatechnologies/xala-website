@@ -1,4 +1,6 @@
-import { Service } from "@/lib/interfaces";
+"use client";
+
+import { Service } from "@/lib/models";
 
 const ServiceCard = ({ service }: { service: Service }) => {
   return (

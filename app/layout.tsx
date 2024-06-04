@@ -2,7 +2,7 @@ import '@/styles/globals.scss';
 import Header from '@/components/shared/Header';
 import ClientFooter from '@/components/shared/ClientFooter';
 import LocaleProviderWrapper from '@/components/shared/LocaleProviderWrapper';
-import { MetaData } from '@/lib/interfaces';
+import { MetaData } from '@/lib/interfaces/interfaces';
 import 'flag-icons/css/flag-icons.min.css';
 
 export const metadata: MetaData = {

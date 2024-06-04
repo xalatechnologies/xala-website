@@ -7,20 +7,22 @@
     "build": "next build",
     "start": "next start -p 3002",
     "lint": "next lint",
-    "seed": "node prisma/seed.js"
+    "seed": "node lib/seed.mjs"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.5.4",
-    "@prisma/client": "^5.14.0",
     "@types/negotiator": "^0.6.3",
     "flag-icons": "^7.2.3",
+    "framer-motion": "^11.2.10",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.9.9",
     "negotiator": "^0.6.3",
     "next": "14.2.3",
-    "prisma": "^5.14.0",
+    "next-sanity": "^9.3.10",
     "react": "^18",
     "react-dom": "^18",
+    "sanity": "^3.44.0",
+    "sanity-image": "^0.1.7",
     "sass": "^1.77.3"
   },
   "devDependencies": {

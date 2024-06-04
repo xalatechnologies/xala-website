@@ -1,4 +1,6 @@
-import { News } from "@/lib/interfaces";
+"use client";
+
+import { News } from "@/lib/models";
 
 const NewsCard = ({ news }: { news: News }) => {
   return (

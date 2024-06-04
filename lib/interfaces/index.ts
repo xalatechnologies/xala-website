@@ -1,0 +1,12 @@
+export type { default as ICaseStudy } from './ICaseStudy';
+export type { default as IClient } from './IClient';
+export type { default as ITechnology } from './ITechnology';
+export type { default as IService } from './IService';
+export type { default as ILocale } from './ILocale';
+export type { default as IBlog } from './IBlog';
+export type { default as IContactForm } from './IContactForm';
+export type { default as IMenu } from './IMenu';
+export type { default as INews } from './INews';
+export type { default as IPage } from './IPage';
+export type { default as ITeam } from './ITeam';
+export type { default as ITranslation } from './ITranslation';

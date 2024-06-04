@@ -1,0 +1,12 @@
+export { fetchCaseStudies } from './fetchCaseStudies';
+export { fetchClients } from './fetchClients';
+export { fetchTechnologies } from './fetchTechnologies';
+export { fetchServices } from './fetchServices';
+export { fetchLocales } from './fetchLocales';
+export { fetchBlogs } from './fetchBlogs';
+export { fetchContactForm } from './fetchContactForm';
+export { fetchMenus } from './fetchMenus';
+export { fetchNews } from './fetchNews';
+export { fetchPages } from './fetchPages';
+export { fetchTeam } from './fetchTeam';
+export { fetchTranslations } from './fetchTranslations';
