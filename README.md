@@ -1,8 +1,4 @@
-Sure! Here's a README template for your frontend project, incorporating all necessary sections:
-
----
-
-# Frontend Project
+# Xala Technologies Website - Frontend Project
 
 This project is a frontend application built using Next.js and Sanity.io for managing and displaying various content types like blogs, case studies, services, news, and more.
 
