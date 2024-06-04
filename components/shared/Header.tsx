@@ -13,7 +13,7 @@ const Header = () => {
     <header className="bg-gray-800 text-white p-4">
       <nav className="flex justify-between items-center container mx-auto">
         <div className="text-2xl font-bold">
-          <Link href="/">Xala Technologies</Link>
+          <Link href="/"><img className='logo' src="./logo.svg" alt="Xala Technologies" /></Link>
         </div>
         <div className="flex items-center">
           {Array.isArray(menu) && menu.map(item => (
