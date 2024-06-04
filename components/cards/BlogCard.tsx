@@ -1,4 +1,6 @@
-import { Blog } from "@/lib/interfaces";
+"use client";
+
+import { Blog } from "@/lib/models";
 
 const BlogCard = ({ blog }: { blog: Blog }) => {
   return (

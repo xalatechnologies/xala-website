@@ -6,7 +6,7 @@ import LanguageSelector from '@/components/shared/LanguageSelector';
 
 const Header = () => {
   const { menu, isLoading } = useLocale();
-
+  
   if (isLoading) return null;
 
   return (
@@ -17,7 +17,7 @@ const Header = () => {
         </div>
         <div className="flex items-center">
           {Array.isArray(menu) && menu.map(item => (
-            <Link key={item.id} href={item.url} className="mr-4">
+            <Link key={item._id} href={item.url} className="mr-4">
               {item.label}
             </Link>
           ))}
