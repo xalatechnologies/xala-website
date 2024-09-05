@@ -1,6 +1,9 @@
+import { PortableTextBlock } from "@portabletext/react";
 import { Translation } from "./models";
 
-export const getTranslation = (translations: Translation[], key: string, category: string) => {
+export const getTranslation = (translations: Translation[], key: string, category: string): any => {
   const translation = translations.find(t => t.key === key && t.category.title === category);
-  return translation ? translation.value : key;
+  const parsedBlockContent = Array.isArray(translation?.value) ? translation.value : [];
+  
+  return translation?.value;
 };

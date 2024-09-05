@@ -6,6 +6,8 @@ import ServiceList from '@/components/lists/ServiceList';
 import BlogList from '@/components/lists/BlogList';
 import NewsList from '@/components/lists/NewsList';
 import CaseStudyList from '../lists/CaseStudyList';
+import { PortableText } from '@portabletext/react'
+import BlockContentComponent from '../BlockContentComponent';
 
 const HomePageClient = () => {
   const { translations, services, blogs, news, caseStudies, isLoading } = useLocale();
@@ -16,19 +18,25 @@ const HomePageClient = () => {
 
   return (
     <div>
-      <h1>{getTranslation(translations, 'welcome', 'Home')}</h1>
-      <p>{getTranslation(translations, 'description', 'Home')}</p>
-      
-      <h2>{getTranslation(translations, 'title', 'Serice')}</h2>
-     <ServiceList services={services} />
+      <BlockContentComponent blockContent={getTranslation(translations, 'welcome', 'Home')} />
+      <h1>
+      <BlockContentComponent blockContent={getTranslation(translations, 'unlock', 'Home')} />
+        <BlockContentComponent className="it-solutions" blockContent={getTranslation(translations, 'it-solutions', 'Home')} />
+      <BlockContentComponent blockContent={getTranslation(translations, 'for-your-business', 'Home')} />
 
-     <h2>{getTranslation(translations, 'title', 'Case-Study')}</h2>
-     <CaseStudyList items={caseStudies} />
+      </h1>
+      <BlockContentComponent blockContent={getTranslation(translations, 'description', 'Home')} />
+      <BlockContentComponent blockContent={getTranslation(translations, 'title', 'Service')} />
 
-      <h2>{getTranslation(translations, 'title', 'Blog')}</h2>
+      <ServiceList services={services} />
+
+      <BlockContentComponent blockContent={getTranslation(translations, 'title', 'Case-Study')} />
+      <CaseStudyList items={caseStudies} />
+
+      <BlockContentComponent blockContent={getTranslation(translations, 'title', 'Blog')} />
       <BlogList blogs={blogs} />
 
-      <h2>{getTranslation(translations, 'title', 'News')}</h2>
+      <BlockContentComponent blockContent={getTranslation(translations, 'title', 'News')} />
       <NewsList news={news} />
     </div>
   );

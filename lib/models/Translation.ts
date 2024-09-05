@@ -1,11 +1,12 @@
 import { ITranslation } from '@/lib/interfaces';
 import Locale from './Locale';
 import Category from './Category';
+import { PortableTextBlock } from '@portabletext/react';
 
 class Translation implements ITranslation {
   _id: string;
   key: string;
-  value: string;
+  value: PortableTextBlock[] | string;
   locale: Locale;
   category: Category;
 
